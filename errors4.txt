@@ -1,0 +1,2 @@
+e: file:///D:/AllTools/AllInOneDocViewer/app/src/main/java/com/docviewer/allinone/ui/screen/DocumentViewerScreen.kt:15:40 Unresolved reference: automirrored
+e: file:///D:/AllTools/AllInOneDocViewer/app/src/main/java/com/docviewer/allinone/ui/screen/DocumentViewerScreen.kt:85:35 Unresolved reference: AutoMirrored

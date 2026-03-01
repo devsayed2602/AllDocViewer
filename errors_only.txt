@@ -1,0 +1,26 @@
+e: file:///D:/AllTools/AllInOneDocViewer/app/src/main/java/com/docviewer/allinone/ui/navigation/AppNavigation.kt:55:40 Unresolved reference: dp
+e: file:///D:/AllTools/AllInOneDocViewer/app/src/main/java/com/docviewer/allinone/ui/screen/HomeScreen.kt:192:45 Unresolved reference: animateItem
+e: file:///D:/AllTools/AllInOneDocViewer/app/src/main/java/com/docviewer/allinone/ui/screen/RecentScreen.kt:155:17 Unresolved reference: SwipeToDismissBox
+e: file:///D:/AllTools/AllInOneDocViewer/app/src/main/java/com/docviewer/allinone/ui/screen/RecentScreen.kt:156:29 Unresolved reference: rememberSwipeToDismissBoxState
+e: file:///D:/AllTools/AllInOneDocViewer/app/src/main/java/com/docviewer/allinone/ui/screen/RecentScreen.kt:157:48 Cannot infer a type for this parameter. Please specify it explicitly.
+e: file:///D:/AllTools/AllInOneDocViewer/app/src/main/java/com/docviewer/allinone/ui/screen/RecentScreen.kt:158:42 Unresolved reference: SwipeToDismissBoxValue
+e: file:///D:/AllTools/AllInOneDocViewer/app/src/main/java/com/docviewer/allinone/ui/screen/RecentScreen.kt:165:25 @Composable invocations can only happen from the context of a @Composable function
+e: file:///D:/AllTools/AllInOneDocViewer/app/src/main/java/com/docviewer/allinone/ui/screen/RecentScreen.kt:169:59 @Composable invocations can only happen from the context of a @Composable function
+e: file:///D:/AllTools/AllInOneDocViewer/app/src/main/java/com/docviewer/allinone/ui/screen/RecentScreen.kt:181:25 @Composable invocations can only happen from the context of a @Composable function
+e: file:///D:/AllTools/AllInOneDocViewer/app/src/main/java/com/docviewer/allinone/ui/screen/SettingsScreen.kt:78:17 Unresolved reference: HorizontalDivider
+e: file:///D:/AllTools/AllInOneDocViewer/app/src/main/java/com/docviewer/allinone/ui/screen/SettingsScreen.kt:87:17 Unresolved reference: HorizontalDivider
+e: file:///D:/AllTools/AllInOneDocViewer/app/src/main/java/com/docviewer/allinone/ui/screen/SettingsScreen.kt:105:17 Unresolved reference: HorizontalDivider
+e: file:///D:/AllTools/AllInOneDocViewer/app/src/main/java/com/docviewer/allinone/ui/screen/SettingsScreen.kt:110:17 Unresolved reference: HorizontalDivider
+e: file:///D:/AllTools/AllInOneDocViewer/app/src/main/java/com/docviewer/allinone/ui/screen/SettingsScreen.kt:115:17 Unresolved reference: HorizontalDivider
+e: file:///D:/AllTools/AllInOneDocViewer/app/src/main/java/com/docviewer/allinone/viewer/PowerPointViewerEngine.kt:12:23 Unresolved reference: hslf
+e: file:///D:/AllTools/AllInOneDocViewer/app/src/main/java/com/docviewer/allinone/viewer/PowerPointViewerEngine.kt:65:23 Unresolved reference: HSLFSlideShow
+e: file:///D:/AllTools/AllInOneDocViewer/app/src/main/java/com/docviewer/allinone/viewer/PowerPointViewerEngine.kt:66:43 Cannot infer a type for this parameter. Please specify it explicitly.
+e: file:///D:/AllTools/AllInOneDocViewer/app/src/main/java/com/docviewer/allinone/viewer/PowerPointViewerEngine.kt:69:30 Overload resolution ambiguity: 
+e: file:///D:/AllTools/AllInOneDocViewer/app/src/main/java/com/docviewer/allinone/viewer/PowerPointViewerEngine.kt:69:40 Cannot infer a type for this parameter. Please specify it explicitly.
+e: file:///D:/AllTools/AllInOneDocViewer/app/src/main/java/com/docviewer/allinone/viewer/PowerPointViewerEngine.kt:70:49 Unresolved reference: hslf
+e: file:///D:/AllTools/AllInOneDocViewer/app/src/main/java/com/docviewer/allinone/viewer/WordViewerEngine.kt:7:23 Unresolved reference: hwpf
+e: file:///D:/AllTools/AllInOneDocViewer/app/src/main/java/com/docviewer/allinone/viewer/WordViewerEngine.kt:8:23 Unresolved reference: hwpf
+e: file:///D:/AllTools/AllInOneDocViewer/app/src/main/java/com/docviewer/allinone/viewer/WordViewerEngine.kt:68:28 Unresolved reference: HWPFDocument
+e: file:///D:/AllTools/AllInOneDocViewer/app/src/main/java/com/docviewer/allinone/viewer/WordViewerEngine.kt:69:29 Unresolved reference: WordExtractor
+e: file:///D:/AllTools/AllInOneDocViewer/app/src/main/java/com/docviewer/allinone/viewer/WordViewerEngine.kt:70:60 Cannot infer a type for this parameter. Please specify it explicitly.
+e: file:///D:/AllTools/AllInOneDocViewer/app/src/main/java/com/docviewer/allinone/viewer/WordViewerEngine.kt:72:24 Unresolved reference: it
