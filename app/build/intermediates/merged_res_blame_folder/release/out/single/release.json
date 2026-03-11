@@ -1,0 +1,46 @@
+[
+    {
+        "merged": "com.docviewer.allinone.app-merged_res-56:/drawable_ic_launcher_foreground.xml.flat",
+        "source": "com.docviewer.allinone.app-main-57:/drawable/ic_launcher_foreground.xml"
+    },
+    {
+        "merged": "com.docviewer.allinone.app-merged_res-56:/mipmap-hdpi_ic_launcher.png.flat",
+        "source": "com.docviewer.allinone.app-main-57:/mipmap-hdpi/ic_launcher.png"
+    },
+    {
+        "merged": "com.docviewer.allinone.app-merged_res-56:/mipmap-xxhdpi_ic_launcher.png.flat",
+        "source": "com.docviewer.allinone.app-main-57:/mipmap-xxhdpi/ic_launcher.png"
+    },
+    {
+        "merged": "com.docviewer.allinone.app-merged_res-56:/mipmap-xhdpi_ic_launcher_round.png.flat",
+        "source": "com.docviewer.allinone.app-main-57:/mipmap-xhdpi/ic_launcher_round.png"
+    },
+    {
+        "merged": "com.docviewer.allinone.app-merged_res-56:/mipmap-xxxhdpi_ic_launcher.png.flat",
+        "source": "com.docviewer.allinone.app-main-57:/mipmap-xxxhdpi/ic_launcher.png"
+    },
+    {
+        "merged": "com.docviewer.allinone.app-merged_res-56:/mipmap-xhdpi_ic_launcher.png.flat",
+        "source": "com.docviewer.allinone.app-main-57:/mipmap-xhdpi/ic_launcher.png"
+    },
+    {
+        "merged": "com.docviewer.allinone.app-merged_res-56:/mipmap-xxxhdpi_ic_launcher_round.png.flat",
+        "source": "com.docviewer.allinone.app-main-57:/mipmap-xxxhdpi/ic_launcher_round.png"
+    },
+    {
+        "merged": "com.docviewer.allinone.app-merged_res-56:/mipmap-mdpi_ic_launcher.png.flat",
+        "source": "com.docviewer.allinone.app-main-57:/mipmap-mdpi/ic_launcher.png"
+    },
+    {
+        "merged": "com.docviewer.allinone.app-merged_res-56:/mipmap-xxhdpi_ic_launcher_round.png.flat",
+        "source": "com.docviewer.allinone.app-main-57:/mipmap-xxhdpi/ic_launcher_round.png"
+    },
+    {
+        "merged": "com.docviewer.allinone.app-merged_res-56:/mipmap-hdpi_ic_launcher_round.png.flat",
+        "source": "com.docviewer.allinone.app-main-57:/mipmap-hdpi/ic_launcher_round.png"
+    },
+    {
+        "merged": "com.docviewer.allinone.app-merged_res-56:/mipmap-mdpi_ic_launcher_round.png.flat",
+        "source": "com.docviewer.allinone.app-main-57:/mipmap-mdpi/ic_launcher_round.png"
+    }
+]

@@ -4,6 +4,7 @@ import android.graphics.Bitmap
 import android.net.Uri
 import androidx.compose.animation.*
 import androidx.compose.foundation.*
+import androidx.compose.foundation.gestures.detectTapGestures
 import androidx.compose.foundation.gestures.detectTransformGestures
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.lazy.LazyColumn
@@ -45,85 +46,105 @@ fun DocumentViewerScreen(uri: Uri, onBack: () -> Unit, viewModel: DocumentViewMo
     val currentBitmap by viewModel.currentBitmap.collectAsState()
     val fileName by viewModel.fileName.collectAsState()
     val documentType by viewModel.documentType.collectAsState()
+    var isControlsVisible by remember { mutableStateOf(true) }
 
     LaunchedEffect(uri) { viewModel.loadDocument(uri) }
 
     Scaffold(
-            topBar = {
-                TopAppBar(
-                        title = {
-                            Column {
-                                Text(
-                                        text = fileName,
-                                        style = MaterialTheme.typography.titleSmall,
-                                        maxLines = 1
-                                )
-                                Row(
-                                        horizontalArrangement = Arrangement.spacedBy(6.dp),
-                                        verticalAlignment = Alignment.CenterVertically
-                                ) {
-                                    FileTypeBadge(type = documentType)
-                                    if (state is ViewerState.PdfLoaded ||
-                                                    state is ViewerState.PptLoaded
-                                    ) {
-                                        Text(
-                                                text = "Page ${currentPage + 1}",
-                                                style = MaterialTheme.typography.bodySmall,
-                                                color = MaterialTheme.colorScheme.onSurfaceVariant
-                                        )
-                                    }
-                                }
-                            }
-                        },
-                        navigationIcon = {
-                            IconButton(onClick = onBack) {
-                                Icon(Icons.Rounded.ArrowBack, contentDescription = "Back")
-                            }
-                        },
-                        colors =
-                                TopAppBarDefaults.topAppBarColors(
-                                        containerColor = MaterialTheme.colorScheme.surface
-                                )
-                )
-            },
-            bottomBar = {
-                if (state is ViewerState.PdfLoaded) {
-                    val total = (state as ViewerState.PdfLoaded).pageCount
-                    PageNavigation(currentPage, total, viewModel::previousPage, viewModel::nextPage)
-                } else if (state is ViewerState.PptLoaded) {
-                    val total = (state as ViewerState.PptLoaded).slideCount
-                    PageNavigation(currentPage, total, viewModel::previousPage, viewModel::nextPage)
-                }
-            }
+        containerColor = MaterialTheme.colorScheme.background
     ) { innerPadding ->
-        Box(modifier = Modifier.fillMaxSize().padding(innerPadding)) {
-            when (val currentState = state) {
-                is ViewerState.Loading -> {
-                    LoadingOverlay()
+        Box(
+            modifier = Modifier
+                .fillMaxSize()
+                .pointerInput(Unit) {
+                    detectTapGestures(onTap = { isControlsVisible = !isControlsVisible })
                 }
-                is ViewerState.Error -> {
-                    ErrorView(
+        ) {
+            // Document Content
+            Box(
+                modifier = Modifier
+                    .fillMaxSize()
+                    .padding(
+                        top = if (isControlsVisible) 64.dp else 0.dp,
+                        bottom = if (isControlsVisible && (state is ViewerState.PdfLoaded || state is ViewerState.PptLoaded)) 80.dp else 0.dp
+                    )
+            ) {
+                when (val currentState = state) {
+                    is ViewerState.Loading -> LoadingOverlay()
+                    is ViewerState.Error -> {
+                        ErrorView(
                             message = currentState.message,
                             onRetry = { viewModel.loadDocument(uri) }
-                    )
+                        )
+                    }
+                    is ViewerState.PdfLoaded, is ViewerState.PptLoaded -> {
+                        ZoomableBox { BitmapViewer(bitmap = currentBitmap) }
+                    }
+                    is ViewerState.WordLoaded -> WordContentView(content = currentState.content)
+                    is ViewerState.ExcelLoaded -> ExcelContentView(content = currentState.content)
+                    is ViewerState.TxtLoaded -> TxtContentView(content = currentState.content)
+                    is ViewerState.CsvLoaded -> CsvContentView(content = currentState.content)
+                    is ViewerState.ImageLoaded -> ZoomableBox { ImageContentView(uri = currentState.cachedUri) }
                 }
-                is ViewerState.PdfLoaded, is ViewerState.PptLoaded -> {
-                    ZoomableBox { BitmapViewer(bitmap = currentBitmap) }
-                }
-                is ViewerState.WordLoaded -> {
-                    WordContentView(content = currentState.content)
-                }
-                is ViewerState.ExcelLoaded -> {
-                    ExcelContentView(content = currentState.content)
-                }
-                is ViewerState.TxtLoaded -> {
-                    TxtContentView(content = currentState.content)
-                }
-                is ViewerState.CsvLoaded -> {
-                    CsvContentView(content = currentState.content)
-                }
-                is ViewerState.ImageLoaded -> {
-                    ZoomableBox { ImageContentView(uri = currentState.cachedUri) }
+            }
+
+            // Top Bar Overlay
+            AnimatedVisibility(
+                visible = isControlsVisible,
+                enter = slideInVertically(initialOffsetY = { -it }) + fadeIn(),
+                exit = slideOutVertically(targetOffsetY = { -it }) + fadeOut(),
+                modifier = Modifier.align(Alignment.TopCenter)
+            ) {
+                TopAppBar(
+                    title = {
+                        Column {
+                            Text(
+                                text = fileName,
+                                style = MaterialTheme.typography.titleSmall,
+                                maxLines = 1
+                            )
+                            Row(
+                                horizontalArrangement = Arrangement.spacedBy(6.dp),
+                                verticalAlignment = Alignment.CenterVertically
+                            ) {
+                                FileTypeBadge(type = documentType)
+                                if (state is ViewerState.PdfLoaded || state is ViewerState.PptLoaded) {
+                                    Text(
+                                        text = "Page ${currentPage + 1}",
+                                        style = MaterialTheme.typography.bodySmall,
+                                        color = MaterialTheme.colorScheme.onSurfaceVariant
+                                    )
+                                }
+                            }
+                        }
+                    },
+                    navigationIcon = {
+                        IconButton(onClick = onBack) {
+                            Icon(Icons.Rounded.ArrowBack, contentDescription = "Back")
+                        }
+                    },
+                    colors = TopAppBarDefaults.topAppBarColors(
+                        containerColor = MaterialTheme.colorScheme.surface.copy(alpha = 0.95f)
+                    ),
+                    modifier = Modifier.statusBarsPadding()
+                )
+            }
+
+            // Bottom Bar Overlay
+            AnimatedVisibility(
+                visible = isControlsVisible && (state is ViewerState.PdfLoaded || state is ViewerState.PptLoaded),
+                enter = slideInVertically(initialOffsetY = { it }) + fadeIn(),
+                exit = slideOutVertically(targetOffsetY = { it }) + fadeOut(),
+                modifier = Modifier.align(Alignment.BottomCenter)
+            ) {
+                Box(modifier = Modifier.navigationBarsPadding()) {
+                    if (state is ViewerState.PdfLoaded) {
+                        val total = (state as ViewerState.PdfLoaded).pageCount
+                        PageNavigation(currentPage, total, viewModel::previousPage, viewModel::nextPage)
+                    } else if (state is ViewerState.PptLoaded) {
+                        val total = (state as ViewerState.PptLoaded).slideCount
+                        PageNavigation(currentPage, total, viewModel::previousPage, viewModel::nextPage)
+                    }
                 }
             }
         }

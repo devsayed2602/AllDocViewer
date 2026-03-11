@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="utf-8"?>
+<vector xmlns:android="http://schemas.android.com/apk/res/android"
+    android:width="108dp"
+    android:height="108dp"
+    android:viewportWidth="108"
+    android:viewportHeight="108">
+
+    <!-- Document shape -->
+    <path
+        android:fillColor="#FFFFFF"
+        android:pathData="M38,25 L62,25 L72,35 L72,83 L38,83 Z" />
+    
+    <!-- Folded corner -->
+    <path
+        android:fillColor="#E0D0FF"
+        android:pathData="M62,25 L72,35 L62,35 Z" />
+    
+    <!-- Line decorations -->
+    <path
+        android:fillColor="#B388FF"
+        android:pathData="M44,45 L66,45"
+        android:strokeWidth="2.5"
+        android:strokeColor="#B388FF" />
+    <path
+        android:fillColor="#B388FF"
+        android:pathData="M44,53 L66,53"
+        android:strokeWidth="2.5"
+        android:strokeColor="#B388FF" />
+    <path
+        android:fillColor="#B388FF"
+        android:pathData="M44,61 L58,61"
+        android:strokeWidth="2.5"
+        android:strokeColor="#B388FF" />
+    
+    <!-- Magnifying glass / viewer icon -->
+    <path
+        android:fillColor="#FFFFFF"
+        android:fillAlpha="0.9"
+        android:pathData="M60,65 m-8,0 a8,8 0,1 1,16 0 a8,8 0,1 1,-16 0"
+        android:strokeWidth="2.5"
+        android:strokeColor="#FFFFFF" />
+    <path
+        android:pathData="M66,71 L72,77"
+        android:strokeWidth="3"
+        android:strokeColor="#FFFFFF"
+        android:strokeLineCap="round" />
+</vector>

@@ -4,3 +4,4 @@
 -dontwarn org.apache.**
 -dontwarn com.tom_roush.**
 -dontwarn javax.xml.**
+-dontwarn java.awt.Shape
